@@ -11,7 +11,7 @@ print("Length of name:", len(name))
 print("Reversed name:", name[::-1])
 
 print("Age is:", age)
-  
+
 
 print("First number:", num1)
 print("Second number:", num2)

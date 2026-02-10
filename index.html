@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Search</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c")
+    center / cover no-repeat;
+}
+
+/* overlay */
+.overlay {
+  min-height: 100vh;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+/* card */
+.card {
+  background: #fff;
+  width: 900px;
+  padding: 25px 30px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 7px 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.tabs button.active {
+  background: #ff6a00;
+  color: #fff;
+  border-color: #ff6a00;
+}
+
+/* inputs */
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* price */
+.price-title {
+  text-align: center;
+  margin: 15px 0 10px;
+  font-weight: 500;
+}
+
+.range {
+  position: relative;
+  height: 20px;
+  margin: 10px 5px 25px;
+}
+
+.range input[type="range"] {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  appearance: none;
+  height: 4px;
+  background: #ff6a00;
+  border-radius: 5px;
+  top: 8px;
+}
+
+.range input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #ff6a00;
+  cursor: pointer;
+}
+
+.price-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.price-inputs input {
+  width: 160px;
+}
+
+/* ---------- MOBILE RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .price-inputs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-inputs input {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs button {
+    padding: 7px 16px;
+    font-size: 13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <div class="card">
+    <p class="title">Select one</p>
+
+    <div class="tabs">
+      <button class="active">Buy</button>
+      <button>Rent</button>
+      <button>Sale</button>
+    </div>
+
+    <!-- SAME CONTENT FOR ALL TABS -->
+    <select>
+      <option>Select City</option>
+      <option>islamabad</option>
+    </select>
+
+    <div class="row">
+      <select>
+        <option>Select Address</option>
+        <option>123,efe,dfe, islamabad</option>
+      </select>
+      <select>
+        <option>Select Area</option>
+        <option>DHA</option>
+        <option>Bhria Town</option>
+      </select>
+    </div>
+
+    <p class="price-title">Select Price</p>
+
+    <div class="range">
+      <input type="range" min="0" max="100" value="20">
+      <input type="range" min="0" max="100" value="80">
+    </div>
+
+    <div class="price-inputs">
+      <input type="text" placeholder="MIN  0.000 lakh">
+      <input type="text" placeholder="MAX  0.000 lakh">
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tab click logic (same content, only style changes)
+  const buttons = document.querySelectorAll(".tabs button");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+</script>
+
+</body>
+</html>
+
