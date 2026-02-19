@@ -1,4 +1,4 @@
-score = 18
+score = 81
 
 if score >= 101:
     print("Please enter valid score")
